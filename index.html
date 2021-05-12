@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Should I Splurge?</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <script src="index.js"></script>
+  </head>
+
+  <body>
+    <div class="ribbon">
+      <a href="https://github.com/">Contribute</a>
+    </div>
+    <div class="flex-container">
+      <div class="flex-item">
+        <h2>Should I Splurge?</h2>
+      </div>
+      <div class="flex-item">
+        I want to spend <input id="dollars" size="6" onkeyup="calculate()"></input> dollars every
+        <select id="time" onChange="calculate()">
+          <option value="1">year</option>
+          <option value="12">month</option>
+          <option value="365">day</option>
+        </select>
+        in retirement.
+      </div>
+      <div class="flex-item">
+        I would need <span id="retirementAmount">0</span> dollars saved to cover this purchase.
+      </div>
+      <div class="flex-item">
+        Assuming <input id="returns" size="2" value="7" onkeyup="calculate()"></input>% investment returns and <input id="inflation" size="2" value="3" onkeyup="calculate()"></input>% inflation.
+      </div>
+    </div>
+  </body>
+</html>
