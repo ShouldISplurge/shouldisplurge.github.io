@@ -38,6 +38,7 @@ function calculate() {
   }
 
   if (dollars && time && returns && inflation) {
+    // Calculate retirement amount
     var yearlySpend = time * dollars;
     var retirementAmount = yearlySpend/((returns - inflation)*.01)
 
@@ -49,5 +50,11 @@ function calculate() {
     });
   
     document.getElementById("retirementAmount").textContent = formatter.format(retirementAmount);
+
+    // Calculate saved amount invested
+    var baseCompoundInterest = yearlySpend * Math.pow(1 + (returns / 100), 10);
+    var paymentCompoundInterest = yearlySpend * (Math.pow(1 + (returns / 100), 10) - 1) / (returns / 100);
+
+    document.getElementById("investmentGrowthAmount").textContent = formatter.format(baseCompoundInterest + paymentCompoundInterest);
   }
 }
