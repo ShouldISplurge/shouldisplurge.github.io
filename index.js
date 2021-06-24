@@ -15,8 +15,16 @@ function calculate() {
   var returns   = document.getElementById("returns").value;
   var inflation = document.getElementById("inflation").value;
 
+  var formatter = new Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
   var url = '#';
   if (dollars) {
+    document.getElementById("spend").textContent = formatter.format(dollars);
     url += 'dollars-' + dollars + '/';
   }
 
@@ -42,19 +50,16 @@ function calculate() {
     var yearlySpend = time * dollars;
     var retirementAmount = yearlySpend/((returns - inflation)*.01)
 
-    var formatter = new Intl.NumberFormat(undefined, {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-  
-    document.getElementById("retirementAmount").textContent = formatter.format(retirementAmount);
+    var retirementAmounts = document.querySelectorAll("#retirementAmount");
+    for (var i in retirementAmounts) {
+      console.log(i);
+      retirementAmounts[i].textContent = formatter.format(retirementAmount);
+    }
 
     // Calculate saved amount invested
     var baseCompoundInterest = yearlySpend * Math.pow(1 + (returns / 100), 10);
     var paymentCompoundInterest = yearlySpend * (Math.pow(1 + (returns / 100), 10) - 1) / (returns / 100);
 
-    document.getElementById("investmentGrowthAmount").textContent = formatter.format(baseCompoundInterest + paymentCompoundInterest + retirementAmount);
+    document.getElementById("investmentGrowthAmount").textContent = formatter.format(baseCompoundInterest + paymentCompoundInterest);
   }
 }
