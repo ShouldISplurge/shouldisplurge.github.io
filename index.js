@@ -52,7 +52,6 @@ function calculate() {
 
     var retirementAmounts = document.querySelectorAll("#retirementAmount");
     for (var i in retirementAmounts) {
-      console.log(i);
       retirementAmounts[i].textContent = formatter.format(retirementAmount);
     }
 
