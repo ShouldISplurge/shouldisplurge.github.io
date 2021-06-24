@@ -55,6 +55,6 @@ function calculate() {
     var baseCompoundInterest = yearlySpend * Math.pow(1 + (returns / 100), 10);
     var paymentCompoundInterest = yearlySpend * (Math.pow(1 + (returns / 100), 10) - 1) / (returns / 100);
 
-    document.getElementById("investmentGrowthAmount").textContent = formatter.format(baseCompoundInterest + paymentCompoundInterest);
+    document.getElementById("investmentGrowthAmount").textContent = formatter.format(baseCompoundInterest + paymentCompoundInterest + retirementAmount);
   }
 }
